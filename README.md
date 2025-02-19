@@ -17,7 +17,7 @@ As resoluções foram organizadas da seguinte maneira:
 - **Example / Exemplo:**  
   - `1001.cpp` → Problem 1001  
 
-  ### 📂 Leetcode
+### 📂 Leetcode
 - Files are named only with the problem name.  
 - Os arquivos são nomeados apenas com o nome do problema.  
 - **Example / Exemplo:**  
