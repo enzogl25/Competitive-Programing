@@ -17,6 +17,12 @@ As resoluções foram organizadas da seguinte maneira:
 - **Example / Exemplo:**  
   - `1001.cpp` → Problem 1001  
 
+  ### 📂 Leetcode
+- Files are named only with the problem name.  
+- Os arquivos são nomeados apenas com o nome do problema.  
+- **Example / Exemplo:**  
+  - `Two Sum.cpp` → Problem Two Sum  
+
 ### ⚠️ Incomplete Problems / Problemas Incompletos  
 - In both platforms, a file name starting with an exclamation mark (`!`) indicates an incomplete or unresolved solution.  
 - Em ambas as plataformas, o nome de um arquivo que começa com um ponto de exclamação (`!`) indica uma solução incompleta ou não resolvida.  
