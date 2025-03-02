@@ -29,6 +29,7 @@ class Solution {
 
         vector<string> letterCombinations(string digits) {
             vector<string> resp;
+            if(digits == "")return resp;
             gerarCombinacoes(digits,0,"",resp);
             sort(resp.begin(), resp.end());
             return resp;
