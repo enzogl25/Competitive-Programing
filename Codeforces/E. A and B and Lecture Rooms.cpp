@@ -16,8 +16,7 @@ vector<int>adj[maxN];
 int LCA(int u, int v){
     if(d[u] < d[v]) swap(u,v);
 
-    // u nó mais profundo
-    // SOBE u ate v
+    
     for(int i = LOGN - 1; i >= 0; i--){
         if(d[u] - (1 << i) >= d[v]){
             u = anc[u][i];
