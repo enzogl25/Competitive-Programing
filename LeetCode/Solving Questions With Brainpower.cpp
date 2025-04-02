@@ -13,12 +13,15 @@ class Solution {
                     solve += dp[nextIndex];
                     dp[i] = max(solve, dp[i+1]);
                 }
-                return dp[0];
-            }
-                
-            
-            
-            
-            
+                else{
+                    if(i + 1 < size){
+                        dp[i] = max(solve, dp[i+1]);
+                    }
+                    else{
+                        dp[i] = solve;
+                    }
+                }
+            } 
+            return dp[0];
         }
     };
