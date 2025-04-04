@@ -7,28 +7,11 @@ struct ListNode {
     int val;
     ListNode *next;
     ListNode() : val(0), next(nullptr) {}
-   ListNode(int x) : val(x), next(nullptr) {}
-   ListNode(int x, ListNode *next) : val(x), next(next) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
 class Solution {
-
-    
-    void insertAtEnd(ListNode*& head, int value){
-        ListNode* newNode = new ListNode(value);
-
-        if(head == nullptr){
-            head = newNode;
-        }
-
-        ListNode* temp = head;
-        while(temp->next != nullptr){
-            temp = temp->next;
-        }
-
-        temp->next = newNode;
-    }
-
     int getSize(ListNode* head){
         int count = 0;
         while(head != nullptr){
@@ -44,37 +27,64 @@ class Solution {
         head = newNode;
     }
 
+    void insertAtEnd(ListNode*& head, int value){
+        ListNode* newNode = new ListNode(value);
+
+        if(head == nullptr){
+            head = newNode;
+            return;
+        }
+
+        ListNode* temp = head;
+        while(temp->next != nullptr){
+            temp = temp->next;
+        }
+
+        temp->next = newNode;
+    }
+
+    ListNode* reverseList(ListNode *head){
+        ListNode* prev = nullptr;
+        ListNode* curr = head;
+        while(curr != nullptr){
+            ListNode* nextTemp = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = nextTemp;
+        }
+        return prev;
+    }
+
 public:
-  ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-     ListNode* l3 = nullptr;
-      int size1 = getSize(l1);
-      int size2 = getSize(l2);
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        int size1 = getSize(l1);
+        int size2 = getSize(l2);
 
-      if(size1 > size2){
-        for(int i = 0; i < size1 - size2; i++){
-            insertAtEnd(l2, 0);
-        }
-      }
-      if(size1 < size2){
-        for(int i = 0; i < size2 - size1; i++){
+        while (size1 < size2) {
             insertAtEnd(l1, 0);
+            size1++;
         }
-      }
+        while (size2 < size1) {
+            insertAtEnd(l2, 0);
+            size2++;
+        }
 
-      int r = 0, val = 0;
-      while(l1 != nullptr){
+        ListNode* result = nullptr;
+        int carry = 0;
 
-            int sum = l1->val; + l2->val + r;
-        
-            val = sum % 10;
-            r = sum / 10;
-            insertAtBeginning(l3, val);
-            
+        while (l1 != nullptr && l2 != nullptr) {
+            int sum = l1->val + l2->val + carry;
+            int digit = sum % 10;
+            carry = sum / 10;
+            insertAtEnd(result, digit);
+
             l1 = l1->next;
-            l2 = l2-> next;
-      }
-      if(r > 0)insertAtBeginning(l3, r);
+            l2 = l2->next;
+        }
 
-      return l3;
-  }
+        if (carry > 0)
+            insertAtEnd(result, carry);
+
+        return result;
+    }
 };
