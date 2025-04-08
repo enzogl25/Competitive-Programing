@@ -10,7 +10,6 @@ struct ListNode {
 };
 
 
-
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
@@ -26,7 +25,23 @@ public:
             current->next = new ListNode(v[i]);
             current = current->next;
         }
-        current = current -> next;
-        return current;
+        return dummy->next;
     }
 };
+
+class Solution {
+    public:
+        ListNode* reverseList(ListNode* head) {
+            ListNode* prev = nullptr;
+            ListNode* current = head;
+    
+            while (current != nullptr) {
+                ListNode* nextTemp = current->next; 
+                current->next = prev;               
+                prev = current;                     
+                current = nextTemp;                 
+            }
+    
+            return prev; 
+        }
+    };
