@@ -15,6 +15,7 @@ class Solution {
     }
 public:
     int climbStairs(int n) {
+        climb();
         return mp[n];
     }
 };
